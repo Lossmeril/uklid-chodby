@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* optional: make printed tables crisp */
+table th,
+table td {
+  vertical-align: top;
+}
+
+/* include print rules */
+@import "../styles/print.css";
