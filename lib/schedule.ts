@@ -56,6 +56,43 @@ export function buildWeeks(params: {
 
 export function flatHeaderLabel(flatNumber: number, flats: Flat[]): string {
   const f = flats.find((x) => x.number === flatNumber);
-  if (!f) return `Flat ${flatNumber}`;
-  return f.label ? `${flatNumber} — ${f.label}` : `Flat ${flatNumber}`;
+  if (!f) return `Byt ${flatNumber}`;
+  return f.label ? `${f.label}` : `Byt ${flatNumber}`;
+}
+
+export function buildWeeksForYear(params: {
+  startFriday: Date;
+  year: number;
+}): WeekRow[] {
+  const { startFriday, year } = params;
+
+  // End: last day of year (UTC-based)
+  const end = new Date(Date.UTC(year + 1, 0, 10));
+
+  const levels: LevelIndex[] = [1, 2, 3, 4];
+
+  const weeks: WeekRow[] = [];
+  let weekIndex = 1;
+
+  while (true) {
+    const friday = fridayOfWeek(startFriday, weekIndex);
+    // week "belongs" if its Friday is within the year
+    if (friday > end) break;
+
+    const hallwayAssigneeByLevel = levels.reduce((acc, level) => {
+      acc[level] = hallwayFlatForWeek(level, weekIndex);
+      return acc;
+    }, {} as Record<LevelIndex, number>);
+
+    weeks.push({
+      weekIndex,
+      friday,
+      hallwayAssigneeByLevel,
+      basementAssignee: basementFlatForWeek(weekIndex),
+    });
+
+    weekIndex += 1;
+  }
+
+  return weeks;
 }

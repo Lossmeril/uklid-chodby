@@ -11,18 +11,19 @@ type Dict = Record<string, string>;
 
 export const dict: Record<Lang, Dict> = {
   cs: {
-    appTitle: "Úklid – rozpis",
-    dashboardTitle: "Nástěnka úklidu",
+    appTitle: "Rozpis úklidů chodby Dukelská 322",
+    dashboardTitle: "Tento týden uklízí",
     today: "Dnes",
-    currentWeek: "Aktuálně",
-    week: "Týden",
+    currentWeek: "Úklid tento týden",
+    week: "týden",
     weekend: "Víkend",
-    task: "Úkol",
-    cleanHallway: "Úklid chodby (Pá/So/Ne)",
-    cleanBasement: "Úklid sklepa",
-    basement: "Sklep (celý dům)",
+    thisWeekCleans: "Tento týden uklízí",
+    basement: "sklep",
+    snow: "sníh",
+    includingBasementAndSnow: "vč. sklepa a sněhu",
     level: "Patro",
     printSchedule: "Tisknutelný rozpis",
+
     printHint: "(vytiskne 4× A4 na šířku)",
     printInstructionsTitle: "Instrukce pro tisk",
     printInstructions1: "Otevřete tisk (Ctrl/Cmd + P)",
@@ -30,7 +31,8 @@ export const dict: Record<Lang, Dict> = {
     printInstructions3: "Orientace: na šířku",
     printInstructions4: "Okraje: výchozí (nebo minimální)",
     levelTitle: "Patro {level} — úklid chodby",
-    levelSubtitle: "Každý byt uklízí jednou za 3 týdny (víkend).",
+    levelSubtitle:
+      "Každý byt uklízí chobu jednou za 3 týdny (o víkendu). Úklidem se rozumí úklid chodby včetně mezipatra a dvou schodišť směrem dolů. Úklid zahrnuje zametení, vytření podlahy a otření zábradlí.",
     thWeek: "Týden",
     thWeekend: "Víkend",
     thBasement: "Sklep (celý dům)",

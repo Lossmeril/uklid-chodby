@@ -1,82 +1,99 @@
-import React from "react";
 import type { Flat } from "@/lib/config";
 import type { LevelIndex, WeekRow } from "@/lib/schedule";
 import { flatHeaderLabel, flatsForLevel } from "@/lib/schedule";
 import { weekendLabel } from "@/lib/date";
 import { t, type Lang } from "@/lib/i18n";
 
+function chunk<T>(arr: T[], size: number): T[][] {
+  const out: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+}
+
 export function LevelTable(props: {
   lang: Lang;
   level: LevelIndex;
   flats: Flat[];
-  weeks: WeekRow[];
+  weeks: WeekRow[]; // full year
 }) {
   const { lang, level, flats, weeks } = props;
   const levelFlats = flatsForLevel(level);
 
+  // Every 3 weeks is one full hallway rotation for a level (3 flats)
+  const rotations = chunk(weeks, 3);
+
   return (
     <div className="print-page">
-      <div className="mb-3 flex items-baseline justify-between">
-        <h2 className="text-2xl font-semibold">
-          {t(lang, "levelTitle", { level })}
-        </h2>
-        <div className="text-sm text-gray-600">{t(lang, "levelSubtitle")}</div>
-      </div>
-
+      <h2 className="text-center font-black mb-3 uppercase text-lg">
+        {t(lang, "appTitle")}
+      </h2>
       <table className="w-full border-collapse text-sm">
         <thead>
           <tr>
-            <th className="border px-2 py-2 text-left">{t(lang, "thWeek")}</th>
-            <th className="border px-2 py-2 text-left">
-              {t(lang, "thWeekend")}
-            </th>
             {levelFlats.map((n) => (
-              <th key={n} className="border px-2 py-2 text-left">
+              <th
+                key={n}
+                className="border border-slate-300 px-2 py-1.5 text-center uppercase font-black text-base"
+              >
                 {flatHeaderLabel(n, flats)}
               </th>
             ))}
-            <th className="border px-2 py-2 text-left">
-              {t(lang, "thBasement")}
-            </th>
           </tr>
         </thead>
 
         <tbody>
-          {weeks.map((w) => {
-            const hallwayAssignee = w.hallwayAssigneeByLevel[level];
-            return (
-              <tr key={w.weekIndex} className="align-top">
-                <td className="border px-2 py-2 font-medium">
-                  {t(lang, "week")} {w.weekIndex}
-                </td>
-                <td className="border px-2 py-2">{weekendLabel(w.friday)}</td>
+          {rotations.map((group) => {
+            if (group.length === 0) return null;
 
-                {levelFlats.map((n) => {
-                  const isAssignee = n === hallwayAssignee;
+            const start = group[0].weekIndex;
+            const end = group[group.length - 1].weekIndex;
+
+            return (
+              <tr key={`${start}-${end}`} className="align-top">
+                {levelFlats.map((flatNumber) => {
+                  const assignedWeek = group.find(
+                    (w) => w.hallwayAssigneeByLevel[level] === flatNumber
+                  );
+
+                  const hasBasementThisWeekend =
+                    assignedWeek &&
+                    assignedWeek.basementAssignee === flatNumber;
+
                   return (
                     <td
-                      key={n}
+                      key={flatNumber}
                       className={[
-                        "border px-2 py-2",
-                        isAssignee ? "font-semibold bg-gray-100" : "",
+                        "border border-slate-300 px-2 py-1.5 text-slate-800 text-center text-xs relative ",
+                        hasBasementThisWeekend ? "bg-amber-100" : "",
                       ].join(" ")}
                     >
-                      {isAssignee ? t(lang, "cleanThisLevel") : ""}
+                      {assignedWeek ? (
+                        <div className="font-normal">
+                          {weekendLabel(assignedWeek.friday, lang)}
+                          {hasBasementThisWeekend ? (
+                            <span className="mt-1 ml-1 text-[7px] uppercase">
+                              ({t(lang, "includingBasementAndSnow")})
+                            </span>
+                          ) : null}
+
+                          <span className="ml-2 text-3xl absolute text-slate-950/20 -translate-y-1/2 top-[11px] right-2">
+                            &#9744;
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="text-gray-400">—</div>
+                      )}
                     </td>
                   );
                 })}
-
-                <td className="border px-2 py-2">
-                  {t(lang, "flat")} {w.basementAssignee}
-                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
 
-      <div className="mt-3 text-xs text-gray-600">
-        {t(lang, "basementRotates")}
+      <div className="mt-3 text-sm text-gray-600">
+        {t(lang, "levelSubtitle")}
       </div>
     </div>
   );

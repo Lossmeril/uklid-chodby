@@ -1,6 +1,10 @@
-import { addDays, differenceInCalendarDays, format } from "date-fns";
+import { addDays, differenceInCalendarDays } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
+import { cs, enGB, uk } from "date-fns/locale";
 import { TIMEZONE } from "./config";
+import { Lang } from "./i18n";
+
+const LOCALE_MAP = { cs, en: enGB, uk } as const;
 
 export function parseYMD(ymd: string): Date {
   // Interpret YYYY-MM-DD as midnight UTC-ish; we will always format in TIMEZONE.
@@ -35,16 +39,23 @@ export function fridayOfWeek(startFriday: Date, weekIndex: number): Date {
   return addDays(startFriday, (weekIndex - 1) * 7);
 }
 
-export function weekendLabel(friday: Date): string {
-  const sat = addDays(friday, 1);
+export function weekendLabel(friday: Date, lang: Lang): string {
   const sun = addDays(friday, 2);
 
-  // Example: "Fri 16 Jan – Sun 18 Jan"
-  const f = formatInTimeZone(friday, TIMEZONE, "EEE d MMM");
-  const s = formatInTimeZone(sun, TIMEZONE, "EEE d MMM");
+  const pattern = lang === "cs" ? "EEE d. MMM" : "EEE d MMM";
+  const f = formatInTimeZone(friday, TIMEZONE, pattern, {
+    locale: LOCALE_MAP[lang],
+  });
+  const s = formatInTimeZone(sun, TIMEZONE, pattern, {
+    locale: LOCALE_MAP[lang],
+  });
+
   return `${f} – ${s}`;
 }
 
-export function formatDatePrague(d: Date, pattern = "EEE d MMM yyyy"): string {
-  return formatInTimeZone(d, TIMEZONE, pattern);
+export function formatDatePrague(
+  d: Date,
+  pattern = "EEEE d. MMMM yyyy"
+): string {
+  return formatInTimeZone(d, TIMEZONE, pattern, { locale: cs });
 }

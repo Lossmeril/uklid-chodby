@@ -12,20 +12,26 @@ export default async function LangLayout(props: {
   return (
     <html lang={lang}>
       <body>
-        <div className="mx-auto max-w-5xl p-4 md:p-8">
-          <div className="mb-6 flex items-center justify-between gap-3">
-            <div className="text-sm text-gray-600">Language:</div>
+        <div className="mx-auto p-4 md:p-8">
+          <div className="mb-6 flex items-center justify-end gap-3 no-print">
             <div className="flex gap-2">
               {LANGS.map((l) => (
                 <a
                   key={l}
                   href={`/${l}`}
                   className={[
-                    "rounded-xl border px-3 py-1 text-sm",
-                    l === lang ? "font-semibold bg-gray-100" : "",
+                    "rounded-lg px-3 py-1 text-sm bg-amber-400/20 hover:bg-amber-500/30 transition-colors",
+                    l === lang
+                      ? "font-semibold bg-amber-500 hover:bg-amber-600"
+                      : "",
                   ].join(" ")}
                 >
-                  {l.toUpperCase()}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/${l}.png`}
+                    alt={l.toUpperCase()}
+                    className="h-full w-full object-cover"
+                  />
                 </a>
               ))}
             </div>

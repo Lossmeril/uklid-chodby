@@ -15,7 +15,7 @@ export const TIMEZONE = "Europe/Prague";
  *
  * Tip: set this to the first Friday you want the rotation to start.
  */
-export const SCHEDULE_START_FRIDAY = "2026-01-16"; // YYYY-MM-DD (example)
+export const SCHEDULE_START_FRIDAY = "2026-01-02"; // YYYY-MM-DD (example)
 
 export const WEEKS_TO_SHOW = 12; // nice because basement cycle is 12 weeks
 
