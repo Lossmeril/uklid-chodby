@@ -24,82 +24,86 @@ export const dict: Record<Lang, Dict> = {
     level: "Patro",
     printSchedule: "Tisknutelný rozpis",
 
-    printHint: "(vytiskne 4× A4 na šířku)",
-    printInstructionsTitle: "Instrukce pro tisk",
-    printInstructions1: "Otevřete tisk (Ctrl/Cmd + P)",
-    printInstructions2: "Papír: A4",
-    printInstructions3: "Orientace: na šířku",
-    printInstructions4: "Okraje: výchozí (nebo minimální)",
-    levelTitle: "Patro {level} — úklid chodby",
     levelSubtitle:
-      "Každý byt uklízí chobu jednou za 3 týdny (o víkendu). Úklidem se rozumí úklid chodby včetně mezipatra a dvou schodišť směrem dolů. Úklid zahrnuje zametení, vytření podlahy a otření zábradlí.",
-    thWeek: "Týden",
-    thWeekend: "Víkend",
-    thBasement: "Sklep (celý dům)",
-    cleanThisLevel: "✅ Úklid tohoto patra",
-    basementRotates: "Sklep rotuje byty 1–12 (každý byt jednou za 12 týdnů).",
-    scanToOpen: "Naskenujte pro otevření nástěnky",
-    flat: "Byt",
+      "Každý byt uklízí chobu jednou za 3 týdny (o víkendu). Úklidem se rozumí úklid chodby včetně mezipatra a dvou schodišť směrem dolů.",
+    cleanupIncludes: "Úklid zahrnuje:",
+    cleanupIncludesItem1: "zametení a vytření podlahy",
+    cleanupIncludesItem2: "otření zábradlí, včetně kovové konstrukce",
+    cleanupIncludesItem3:
+      "vymetení oklepávací rohože u vchodu (pouze první patro)",
+
+    cleanupBasement: "Úklid sklepa",
+    cleanupBasementIncludes:
+      "Úklid sklepa, který se opakuje každých 12 týdnů, zahrnuje:",
+    cleanupBasementIncludesItem1: "vymetení a vytření podlahy ve sklepě",
+    cleanupBasementIncludesItem2:
+      "vymetení a vytření schodů vedoucích do sklepa, včetně ramp pro kočárky",
+    cleanupBasementIncludesItem3:
+      "úklid sněhu na chodníku před vchodem (pokud je potřeba)",
   },
   en: {
-    appTitle: "Cleaning – schedule",
-    dashboardTitle: "Cleaning dashboard",
+    appTitle: "Hallway cleaning schedule – Dukelská 322",
+    dashboardTitle: "This week cleans",
     today: "Today",
-    currentWeek: "Current",
-    week: "Week",
+    currentWeek: "Cleaning this week",
+    week: "week",
     weekend: "Weekend",
-    task: "Task",
-    cleanHallway: "Clean hallway (Fri/Sat/Sun)",
-    cleanBasement: "Clean basement",
-    basement: "Basement (whole building)",
+    thisWeekCleans: "This week cleans",
+    basement: "basement",
+    snow: "snow",
+    includingBasementAndSnow: "including basement and snow",
     level: "Level",
-    printSchedule: "Print-friendly schedule",
-    printHint: "(prints 4× A4 landscape)",
-    printInstructionsTitle: "Print instructions",
-    printInstructions1: "Open print dialog (Ctrl/Cmd + P)",
-    printInstructions2: "Paper size: A4",
-    printInstructions3: "Orientation: Landscape",
-    printInstructions4: "Margins: Default (or Minimum)",
-    levelTitle: "Level {level} — Hallway Cleaning",
-    levelSubtitle: "Each flat cleans once every 3 weeks (weekend).",
-    thWeek: "Week",
-    thWeekend: "Weekend",
-    thBasement: "Basement (whole building)",
-    cleanThisLevel: "✅ Clean this level",
-    basementRotates:
-      "Basement rotates through flats 1–12 (each flat once every 12 weeks).",
-    scanToOpen: "Scan to open dashboard",
-    flat: "Flat",
+    printSchedule: "Printable schedule",
+
+    levelSubtitle:
+      "Each flat cleans the hallway once every 3 weeks (on the weekend). Cleaning means cleaning the hallway including the mezzanine and the two staircases going downwards.",
+    cleanupIncludes: "Cleaning includes:",
+    cleanupIncludesItem1: "sweeping and mopping the floor",
+    cleanupIncludesItem2: "wiping handrails, including the metal structure",
+    cleanupIncludesItem3:
+      "cleaning the doormat at the entrance (first floor only)",
+
+    cleanupBasement: "Basement cleaning",
+    cleanupBasementIncludes:
+      "Basement cleaning, which repeats every 12 weeks, includes:",
+    cleanupBasementIncludesItem1: "sweeping and mopping the basement floor",
+    cleanupBasementIncludesItem2:
+      "sweeping and mopping the stairs leading to the basement, including stroller ramps",
+    cleanupBasementIncludesItem3:
+      "snow removal on the sidewalk in front of the entrance (if necessary)",
   },
+
   uk: {
-    appTitle: "Прибирання — графік",
-    dashboardTitle: "Панель прибирання",
+    appTitle: "Графік прибирання коридору Dukelská 322",
+    dashboardTitle: "Цього тижня прибирають",
     today: "Сьогодні",
-    currentWeek: "Поточний",
-    week: "Тиждень",
+    currentWeek: "Прибирання цього тижня",
+    week: "тиждень",
     weekend: "Вихідні",
-    task: "Завдання",
-    cleanHallway: "Прибрати коридор (Пт/Сб/Нд)",
-    cleanBasement: "Прибрати підвал",
-    basement: "Підвал (увесь будинок)",
+    thisWeekCleans: "Цього тижня прибирають",
+    basement: "підвал",
+    snow: "сніг",
+    includingBasementAndSnow: "включно з підвалом та снігом",
     level: "Поверх",
     printSchedule: "Версія для друку",
-    printHint: "(друк 4× A4 альбом)",
-    printInstructionsTitle: "Інструкції для друку",
-    printInstructions1: "Відкрийте друк (Ctrl/Cmd + P)",
-    printInstructions2: "Папір: A4",
-    printInstructions3: "Орієнтація: альбомна",
-    printInstructions4: "Поля: стандартні (або мінімальні)",
-    levelTitle: "Поверх {level} — прибирання коридору",
-    levelSubtitle: "Кожна квартира прибирає раз на 3 тижні (вихідні).",
-    thWeek: "Тиждень",
-    thWeekend: "Вихідні",
-    thBasement: "Підвал (увесь будинок)",
-    cleanThisLevel: "✅ Прибрати цей поверх",
-    basementRotates:
-      "Підвал: ротація квартир 1–12 (кожна квартира раз на 12 тижнів).",
-    scanToOpen: "Скануйте, щоб відкрити панель",
-    flat: "Квартира",
+
+    levelSubtitle:
+      "Кожна квартира прибирає коридор раз на 3 тижні (у вихідні). Прибирання включає коридор, мезонін та два сходові прольоти вниз.",
+    cleanupIncludes: "Прибирання включає:",
+    cleanupIncludesItem1: "підмітання та миття підлоги",
+    cleanupIncludesItem2:
+      "протирання поручнів, включно з металевою конструкцією",
+    cleanupIncludesItem3:
+      "очищення килимка для вибивання біля входу (лише перший поверх)",
+
+    cleanupBasement: "Прибирання підвалу",
+    cleanupBasementIncludes:
+      "Прибирання підвалу, яке повторюється кожні 12 тижнів, включає:",
+    cleanupBasementIncludesItem1: "підмітання та миття підлоги в підвалі",
+    cleanupBasementIncludesItem2:
+      "підмітання та миття сходів, що ведуть до підвалу, включно з пандусами для візків",
+    cleanupBasementIncludesItem3:
+      "прибирання снігу на тротуарі перед входом (за потреби)",
   },
 };
 
