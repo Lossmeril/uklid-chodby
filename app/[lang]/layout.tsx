@@ -2,6 +2,10 @@ import "@/app/globals.css";
 import type { ReactNode } from "react";
 import { isLang, type Lang, LANGS, DEFAULT_LANG } from "@/lib/i18n";
 
+export const metadata = {
+  robots: { index: false, follow: false },
+};
+
 export default async function LangLayout(props: {
   children: ReactNode;
   params: Promise<{ lang: string }>;
