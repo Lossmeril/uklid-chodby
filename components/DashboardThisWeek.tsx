@@ -4,6 +4,7 @@ import { flatHeaderLabel } from "@/lib/schedule";
 import type { LevelIndex } from "@/lib/schedule";
 import { basementFlatForWeek, hallwayFlatForWeek } from "@/lib/schedule";
 import {
+  cleaningWeekIndexSince,
   formatDatePrague,
   fridayOfWeek,
   weekendLabel,
@@ -32,7 +33,7 @@ export function DashboardThisWeek(props: {
 }) {
   const { lang, flats, startFriday, now } = props;
 
-  const weekIndex = weekIndexSince(startFriday, now);
+  const weekIndex = cleaningWeekIndexSince(startFriday, now);
   const friday = fridayOfWeek(startFriday, weekIndex);
 
   const levels: LevelIndex[] = [1, 2, 3, 4];
@@ -40,7 +41,7 @@ export function DashboardThisWeek(props: {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-lg p-12 shadow-sm w-full bg-gray-200">
+      <div className="rounded-lg p-6 lg:p-12 shadow-sm w-full bg-gray-200">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h1 className="text-2xl font-semibold">
             {t(lang, "dashboardTitle")}

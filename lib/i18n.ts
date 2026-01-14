@@ -40,6 +40,10 @@ export const dict: Record<Lang, Dict> = {
       "vymetení a vytření schodů vedoucích do sklepa, včetně ramp pro kočárky",
     cleanupBasementIncludesItem3:
       "úklid sněhu na chodníku před vchodem (pokud je potřeba)",
+
+    liveSchedule: "Živý rozpis",
+    liveScheduleDesc:
+      "Podívejte se na aktuální rozpis úklidů chodby na tento týden online:",
   },
   en: {
     appTitle: "Hallway cleaning schedule – Dukelská 322",
@@ -71,6 +75,10 @@ export const dict: Record<Lang, Dict> = {
       "sweeping and mopping the stairs leading to the basement, including stroller ramps",
     cleanupBasementIncludesItem3:
       "snow removal on the sidewalk in front of the entrance (if necessary)",
+
+    liveSchedule: "Live schedule",
+    liveScheduleDesc:
+      "View the current hallway cleaning schedule for this week online:",
   },
 
   uk: {
@@ -104,6 +112,10 @@ export const dict: Record<Lang, Dict> = {
       "підмітання та миття сходів, що ведуть до підвалу, включно з пандусами для візків",
     cleanupBasementIncludesItem3:
       "прибирання снігу на тротуарі перед входом (за потреби)",
+
+    liveSchedule: "Онлайн-розклад",
+    liveScheduleDesc:
+      "Перегляньте актуальний розклад прибирання коридору на цей тиждень онлайн:",
   },
 };
 
