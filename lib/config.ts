@@ -28,7 +28,7 @@ export const FLATS: Flat[] = Array.from({ length: TOTAL_FLATS }, (_, i) => {
     2: "Pylypko, Udalova",
     3: "Solíková",
     4: "Kovář, Kuchařová",
-    5: "Mládková",
+
     6: "Skalický",
     7: "Zahálka",
     8: "Buryi, Pashko",
